@@ -1,0 +1,145 @@
+
+###############################################
+# the complete installation reference URL:
+###############################################
+
+https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
+
+(update: I think this one might be even better:)
+https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi/blob/master/Raspberry_Pi_Guide.md
+
+
+sudo apt-get install -y vim bc
+
+#gain more SDCARD space; remove unneed software
+###############################################
+sudo apt-get purge -y wolfram-engine;
+sudo apt-get purge -y libreoffice*;
+sudo apt-get clean;
+sudo apt-get autoremove -y;
+
+
+###############################################
+# install dependencies
+###############################################
+
+sudo apt-get install -y build-essential cmake pkg-config;
+echo;echo;echo;
+sudo apt-get install -y libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev;
+echo;echo;echo;
+
+sudo apt-get install -y libavcodec-dev libavformat-dev libswscale-dev libv4l-dev;
+echo;echo;echo;
+sudo apt-get install -y libxvidcore-dev libx264-dev;
+echo;echo;echo;
+
+sudo apt-get install -y libfontconfig1-dev libcairo2-dev;
+echo;echo;echo;
+sudo apt-get install -y libgdk-pixbuf2.0-dev libpango1.0-dev;
+echo;echo;echo;
+
+sudo apt-get install -y libgtk2.0-dev libgtk-3-dev;
+echo;echo;echo;
+
+sudo apt-get install -y libatlas-base-dev gfortran
+echo;echo;echo;
+
+sudo apt-get install -y libhdf5-dev libhdf5-serial-dev libhdf5-103
+echo;echo;echo;
+
+sudo apt-get install -y libqtgui4 libqtwebkit4 libqt4-test python3-pyqt5
+echo;echo;echo;
+
+sudo apt-get install -y python3-dev
+echo;echo;echo;
+
+
+
+###############################################
+# create virtual python environment (need pip, virtualenv , virtualenvwrapper)
+###############################################
+
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+sudo python3 get-pip.py
+sudo rm -rf ~/.cache/pip
+
+sudo pip install virtualenv virtualenvwrapper
+
+
+#EDIT .bashrc, add to bottom:
+###############################################
+# virtualenv and virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
+
+#save, exit .bashrc, reload:
+###############################################
+source ~/.bashrc
+
+# now create the virtual environment (we're calling it 'cv')
+###############################################
+mkvirtualenv cv -p python3
+
+
+
+###############################################
+#INSTall opencv4 into 'cv' virtual environment using 'pip'
+###############################################
+pip install opencv-contrib-python
+pip install opencv-python
+
+pip3 install matplotlib
+
+
+###############################################
+#TEST opencv installation (while still in 'cv' virtual env)
+# there's an issue, thus we create that LD_PRELOAD prior
+# to starting the python shell
+###############################################
+LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 python3
+
+#at the python prompt (>>>), enter:
+
+>>> import cv2
+
+# you should only see (>>>) again  (no errors)
+
+# try importing other modules:
+import numpy as np
+from matplotlib import pyplot as plt
+
+# let's try to load and display an image within this shell using cv2.
+# copy some image into current directory. use another terminal; stay
+inside the python shell with current terminal.
+
+# load the image:
+>>> img = cv2.imread('face1.png',0)
+# make sure you have an image
+>>> print(img)
+[[ 93  94  94 ... 110 110 110]
+ [ 93  94  95 ... 111 111 111]
+ [ 93  94  95 ... 111 111 111]
+ ...
+ [201 199 196 ... 107 105 102]
+ [201 198 194 ... 106 104 101]
+ [200 197 193 ... 105 104 102]]
+
+#display the image; requires 2 steps
+>>> cv2.imshow('image',img)
+>>> cv2.waitKey(0)
+
+# to continue program, click on image, and press any key
+
+# delete the image & its window
+>>> cv2.destroyAllWindows()
+
+>>> (CTRL-D) gets you out of python shell
+
+
+
+
+
+
+
