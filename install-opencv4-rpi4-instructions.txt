@@ -8,6 +8,9 @@ https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-
 (update: I think this one might be even better:)
 https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi/blob/master/Raspberry_Pi_Guide.md
 
+sudo apt-get update & sudo apt-get upgrade -y
+
+sudo apt-get dist-upgrade
 
 sudo apt-get install -y vim bc
 
@@ -64,14 +67,14 @@ sudo python get-pip.py
 sudo python3 get-pip.py
 sudo rm -rf ~/.cache/pip
 
-sudo pip install virtualenv virtualenvwrapper
+sudo pip3 install virtualenv virtualenvwrapper
 
 
 #EDIT .bashrc, add to bottom:
 ###############################################
 # virtualenv and virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 
 #save, exit .bashrc, reload:
@@ -87,8 +90,8 @@ mkvirtualenv cv -p python3
 ###############################################
 #INSTall opencv4 into 'cv' virtual environment using 'pip'
 ###############################################
-pip install opencv-contrib-python
-pip install opencv-python
+pip3 install opencv-contrib-python
+pip3 install opencv-python
 
 pip3 install matplotlib
 
