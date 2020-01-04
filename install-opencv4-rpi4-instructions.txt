@@ -10,7 +10,7 @@ https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-a
 
 sudo apt-get update && sudo apt-get upgrade -y
 
-sudo apt-get dist-upgrade
+sudo apt-get dist-upgrade -y
 
 sudo apt-get install -y vim bc
 
