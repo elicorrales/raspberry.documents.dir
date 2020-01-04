@@ -8,7 +8,7 @@ https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-
 (update: I think this one might be even better:)
 https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi/blob/master/Raspberry_Pi_Guide.md
 
-sudo apt-get update & sudo apt-get upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 
 sudo apt-get dist-upgrade
 
