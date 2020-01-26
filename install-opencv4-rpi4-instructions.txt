@@ -8,6 +8,29 @@ https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-
 (update: I think this one might be even better:)
 https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi/blob/master/Raspberry_Pi_Guide.md
 
+###############################################
+###############################################
+###############################################
+# WARNING! on a new Raspberry Pi install,
+# if its date/time is WAY off, it will not
+# sync the time, and you will have all sorts
+# of problems.
+# so check the date first.
+###############################################
+###############################################
+###############################################
+date
+
+if above outputs date way off, first insure timezone is correct.
+sudo raspi-config
+
+(then go to Localisation Options --> Change Timezone)
+
+(now exit raspi-config , possibly reboot..then at command line, change date):
+
+date -s "MM/DD/YYYY HH:mm" (replace those letters with actual date and time)
+
+
 sudo apt-get update && sudo apt-get upgrade -y
 
 sudo apt-get dist-upgrade -y
